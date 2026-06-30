@@ -13,9 +13,5 @@ const route = useRoute();
 
 const isauthOrRootRoute: boolean =
   route.path === "/" || route.path === "/login" ? true : false;
-  
-</script>
 
-<style>
-@import "tailwindcss";
-</style>
+</script>
