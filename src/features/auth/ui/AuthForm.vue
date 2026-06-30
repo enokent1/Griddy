@@ -1,0 +1,67 @@
+<template>
+  <form
+    class="flex flex-col gap-5 w-full max-w-md rounded-3xl border border-cyan-300/60 bg-slate-900 p-6 shadow-2xl shadow-black/30">
+    <div class="flex justify-center gap-10">
+      <input
+        class="peer/signup appearance-none hidden"
+        type="radio"
+        name="auth-mode"
+        value="signup"
+        id="signup"
+        checked />
+      <label
+        for="signup"
+        class="cursor-pointer text-slate-300 peer-checked/signup:text-cyan-400"
+        >Вход</label
+      >
+      <input
+        class="peer/register hidden appearance-none"
+        type="radio"
+        name="auth-mode"
+        value="register"
+        id="register" />
+      <label
+        for="register"
+        class="cursor-pointer text-slate-300 peer-checked/register:text-cyan-400"
+        >Регистрация</label
+      >
+    </div>
+
+    <div class="flex flex-col mt-6 gap-5">
+      <AuthInput
+        type="text"
+        name="username"
+        @updateInputValue="usernameInput = $event" />
+      <AuthInput
+        type="password"
+        name="password"
+        @updateInputValue="userPasswordInput = $event" />
+    </div>
+
+    <button
+      @click.prevent="submitForm"
+      class="px-6 py-2 w-fit self-center bg-cyan-500 rounded-full cursor-pointer">
+      <span class="text-slate-800">Войти</span>
+    </button>
+  </form>
+</template>
+
+<script setup lang="ts">
+import { AuthInput } from "@/shared/ui/AuthInput";
+import type { LoginPayload } from "../model/types";
+import { ref } from "vue";
+
+const emit = defineEmits<{
+  (emit: "submit", userData: LoginPayload): void;
+}>();
+
+const usernameInput = ref<string>("");
+const userPasswordInput = ref<string>("");
+
+const submitForm = (): void => {
+  emit("submit", {
+    username: usernameInput.value,
+    password: userPasswordInput.value,
+  } as LoginPayload);
+};
+</script>
