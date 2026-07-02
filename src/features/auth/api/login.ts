@@ -1,28 +1,31 @@
-export const authenticateUser = async (username: string, password: string) => {
+import type { LoginPayload, LoginResponse, ErrorResponse, LoginResult } from "../model/types";
+
+const LOGIN_URL: string = "https://dummyjson.com/auth/login"
+
+export const authenticateUser = async (payload: LoginPayload): Promise<LoginResult> => {
   try {
-    const response = await fetch("https://dummyjson.com/auth/login", {
+    const response = await fetch(LOGIN_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        username: username,
-        password: password,
+        username: payload.username,
+        password: payload.password,
         expiresInMins: 30,
       }),
       credentials: "include",
     });
 
     if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
+      const errorData: ErrorResponse = await response.json().catch(() => ({}));
       throw new Error(errorData.message || `Ошибка: ${response.status}`);
     }
 
-    const result = await response.json();
-    return { success: true, userData: result };
+    const result: LoginResponse = await response.json();
+    return { success: true, userData: result } as LoginResult;
   } catch (error) {
-    console.log(error);
     return {
       success: false,
       error: error instanceof Error ? error.message : "Unknown error",
-    };
+    } as LoginResult;
   }
 };

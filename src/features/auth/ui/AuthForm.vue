@@ -60,8 +60,8 @@ const userPasswordInput = ref<string>("");
 
 const submitForm = (): void => {
   emit("submit", {
-    username: usernameInput.value,
-    password: userPasswordInput.value,
+    username: usernameInput.value.trim(),
+    password: userPasswordInput.value.trim(),
   } as LoginPayload);
 };
 </script>
