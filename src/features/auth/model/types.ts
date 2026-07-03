@@ -1,12 +1,12 @@
 export type LoginPayload = {
   username: string;
   password: string;
-}
+};
 
 export type ValidationResult = {
   isValid: boolean;
-  error?: string
-}
+  error?: string;
+};
 
 export interface LoginResponse {
   accessToken: string;
@@ -17,13 +17,15 @@ export interface LoginResponse {
   firstName: string;
   lastName: string;
   gender: string;
-  image: string
+  image: string;
 }
 
-export type LoginResult = 
-  | {success: true, userData: LoginResponse}
-  | {success: false, error: string}
+export type User = Omit<LoginResponse, "accessToken" | "refreshToken">;
+
+export type LoginResult =
+  | { success: true; userData: LoginResponse }
+  | { success: false; error: string };
 
 export interface ErrorResponse {
-  message?: string
+  message?: string;
 }
