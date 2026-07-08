@@ -1,15 +1,17 @@
 <template>
-    <div class="w-25%">
-        <ul>
-            <li v-for="link in points">
-                {{ link }}
-            </li>
-        </ul>
-    </div>
+  <div class="h-full px-4 py-5">
+    <ul class="space-y-2">
+      <li v-for="sidebarItem in sidebarItems" :key="sidebarItem.label">
+        <AppLink
+          :label="sidebarItem.label"
+          :icon="sidebarItem.icon"
+          :path="sidebarItem.path" />
+      </li>
+    </ul>
+  </div>
 </template>
 
-<script setup>
-const points = [
-    'Задачи', 'Проекты','Дашборд','Календарь',
-]
+<script setup lang="ts">
+import { sidebarItems } from "../config/sidebarConfig";
+import { AppLink } from "@/shared/ui/AppLink";
 </script>
