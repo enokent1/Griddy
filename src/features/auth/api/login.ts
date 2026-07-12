@@ -1,6 +1,7 @@
 import type { LoginPayload, LoginResponse, ErrorResponse, LoginResult } from "../model/types";
+import { API_URL } from "@/shared/config/api";
 
-const LOGIN_URL: string = "https://dummyjson.com/auth/login"
+const LOGIN_URL: string = `${API_URL}/auth/login`
 
 export const authenticateUser = async (payload: LoginPayload): Promise<LoginResult> => {
   try {
