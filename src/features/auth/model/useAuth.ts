@@ -9,6 +9,7 @@ export function useAuth() {
 
   const login = async (payload: LoginPayload): Promise<boolean> => {
     isLoading.value = true;
+    error.value = null;
 
     try {
       const res = await authenticateUser(payload);
