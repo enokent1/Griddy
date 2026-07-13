@@ -1,6 +1,7 @@
 import { ref } from "vue";
 import { authenticateUser } from "../api/login";
 import type { LoginPayload, User } from "./types";
+import { errorHandler } from "./errorHandler";
 
 export function useAuth() {
   const user = ref<User | null>(null);
@@ -14,7 +15,7 @@ export function useAuth() {
     try {
       const res = await authenticateUser(payload);
       if (!res.success) {
-        error.value = res.error;
+        error.value = errorHandler(res.status);
         return false;
       }
 
@@ -22,7 +23,8 @@ export function useAuth() {
       localStorage.setItem("user", JSON.stringify(res.userData));
       return true;
     } catch (err) {
-      error.value = err instanceof Error ? err.message : "Ошибка";
+      error.value = "Что-то пошло не так";
+      console.error(err);
       return false;
     } finally {
       isLoading.value = false;
