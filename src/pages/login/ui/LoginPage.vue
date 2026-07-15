@@ -1,6 +1,6 @@
 <template>
   <main
-    class="flex min-h-screen items-center justify-center bg-slate-950 px-6 py-10 text-slate-100">
+    class="auth-page">
     <AuthForm @success="handleSuccess" />
   </main>
 </template>
@@ -15,3 +15,17 @@ const handleSuccess = (): void => {
   router.push("/dashboard");
 };
 </script>
+
+<style scope lang="scss">
+$background-color: oklch(12.9% 0.042 264.695);
+$text-color: oklch(96.8% 0.007 247.896);
+
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: $background-color;
+  color: $text-color;
+}
+</style>

@@ -1,17 +1,17 @@
 <template>
   <div
     v-if="!isauthOrRootRoute"
-    class="grid h-screen grid-cols-1 grid-rows-[auto_1fr] bg-slate-950">
+    class="app-layout">
     <header
-      class="row-start-1 border-b border-cyan-400/20 bg-slate-900/90 shadow-lg shadow-cyan-500/10">
+      class="app-layout__header">
       <Header />
     </header>
-    <div class="grid grid-cols-[280px_1fr] row-start-2 overflow-hidden">
+    <div class="app-layout__body">
       <aside
-        class="overflow-y-auto border-r border-cyan-400/20 bg-slate-900/80">
+        class="app-layout__sidebar">
         <Sidebar />
       </aside>
-      <main class="overflow-y-auto bg-slate-950/60 p-6">
+      <main class="app-layout__main">
         <RouterView />
       </main>
     </div>
@@ -31,3 +31,41 @@ const isauthOrRootRoute = computed<boolean>(
   () => route.path === "/" || route.path === "/login",
 );
 </script>
+
+<style scope lang="scss">
+$background-color: oklch(12.9% 0.042 264.695);
+$border-color: oklch(78.9% 0.154 211.53 / 0.2);
+$header-background-color: oklch(20.8% 0.042 265.755 / 0.9);
+$sidebar-background-color: oklch(20.8% 0.042 265.755 / 0.8);
+
+.app-layout {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  background: $background-color;
+
+  &__header {
+    grid-row: 1 / 2;
+    border-bottom: 1px solid $border-color;
+    background: $header-background-color;
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: minmax(10%, 20%) 1fr;
+    grid-row-start: 2;
+    overflow: hidden;
+  }
+
+  &__sidebar {
+    background: $sidebar-background-color;
+    border-right: 1px solid $border-color;
+    overflow-y: auto;
+  }
+
+  &__main {
+    padding: 2rem;
+    overflow-y: auto;
+  }
+}
+</style>

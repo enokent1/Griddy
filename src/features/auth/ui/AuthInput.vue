@@ -37,51 +37,55 @@ const updateInputValue = (): void => {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+$border-color: #c9c9c9;
+$accent-color: oklch(86.5% 0.127 207.078);
+$bg-color: oklch(20.8% 0.042 265.755);
+
 .input-container {
   position: relative;
   width: 100%;
-}
 
-input {
-  width: 100%;
-  height: 3rem;
-  padding: 1rem 1rem 0.3rem;
-  border-radius: 1rem;
-  border: 2px solid #c9c9c9;
-  background: transparent;
-  color: #c9c9c9;
-  outline: none;
-  transition: 0.2s ease;
-  box-sizing: border-box;
-}
+  input {
+    width: 100%;
+    height: 3rem;
+    padding: 1rem 1rem 0.3rem;
+    border: 2px solid $border-color;
+    border-radius: 1rem;
+    background: transparent;
+    color: $border-color;
+    outline: none;
+    box-sizing: border-box;
+    transition: 0.2s ease;
 
-.label-line {
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #fff;
-  padding: 0 0.3rem;
-  background-color: oklch(20.8% 0.042 265.755);
-  transition: 0.3s ease;
-  pointer-events: none;
-}
+    &:focus {
+      color: $accent-color;
+      border-color: $accent-color;
 
-input:focus {
-  color: oklch(86.5% 0.127 207.078);
-  border-color: oklch(86.5% 0.127 207.078);
-}
+      + .label-line {
+        top: 0;
+        transform: translateY(-50%) scale(0.8);
+        color: $accent-color;
+      }
+    }
+  }
 
-input:focus + .label-line {
-  top: 0;
-  transform: translateY(-50%) scale(0.8);
-  color: oklch(86.5% 0.127 207.078);
-}
+  .label-line {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    padding: 0 0.3rem;
+    background: $bg-color;
+    color: #fff;
+    pointer-events: none;
+    transition: 0.3s ease;
 
-.label-line.not-empty {
-  top: 0;
-  transform: translateY(-50%) scale(0.8);
-  color: #c9c9c9;
+    &.not-empty {
+      top: 0;
+      transform: translateY(-50%) scale(0.8);
+      color: $border-color;
+    }
+  }
 }
 </style>

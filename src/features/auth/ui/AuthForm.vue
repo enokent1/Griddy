@@ -1,9 +1,9 @@
 <template>
   <form
-    class="flex flex-col gap-5 w-full max-w-md rounded-3xl border border-cyan-300/60 bg-slate-900 p-6 shadow-2xl shadow-black/30">
-    <div class="flex justify-center gap-10">
+    class="auth-form">
+    <div class="auth-form__tabs">
       <input
-        class="peer/signup appearance-none hidden"
+        class="auth-form__radio"
         type="radio"
         name="auth-mode"
         value="signup"
@@ -11,23 +11,23 @@
         checked />
       <label
         for="signup"
-        class="cursor-pointer text-slate-300 peer-checked/signup:text-cyan-400"
+        class="auth-form__tab"
         >Вход</label
       >
       <input
-        class="peer/register hidden appearance-none"
+        class="auth-form__radio"
         type="radio"
         name="auth-mode"
         value="register"
         id="register" />
       <label
         for="register"
-        class="cursor-pointer text-slate-300 peer-checked/register:text-cyan-400"
+        class="auth-form__tab"
         >Регистрация</label
       >
     </div>
 
-    <div class="flex flex-col mt-6 gap-5">
+    <div class="auth-form__inputs">
       <AuthInput
         type="text"
         name="username"
@@ -40,7 +40,7 @@
 
     <div
       v-if="error"
-      class="flex justify-center rounded-2xl bg-red-500/10 border border-red-500/30 p-3 text-red-400 text-sm">
+      class="auth-form__error">
       <span>
         {{ error }}
       </span>
@@ -49,8 +49,8 @@
     <button
       @click.prevent="submitForm"
       :disabled="isLoading"
-      class="px-6 py-2 w-fit self-center bg-cyan-500 rounded-full cursor-pointer">
-      <span class="text-slate-800">Войти</span>
+      class="auth-form__button">
+      <span class="auth-form__button-text">Войти</span>
     </button>
   </form>
 </template>
@@ -82,3 +82,84 @@ const submitForm = async (): Promise<void> => {
   }
 };
 </script>
+
+<style scope lang="scss">
+$border-color: oklch(85.4% 0.15 195.2 / 0.6);
+$backdround-color: oklch(20.8% 0.042 265.755);
+$accent-color: oklch(78.9% 0.154 211.53);
+$base-color: oklch(92.9% 0.013 255.508);
+$error-color: oklch(70.4% 0.191 22.216);
+$error-background-color: oklch(63.7% 0.237 25.331 / 0.3);
+$button-background: oklch(71.5% 0.143 215.221);
+$button-text-color: oklch(27.9% 0.041 260.031);
+
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 30rem;
+  padding: 1.5rem;
+  border: 1px solid $border-color;
+  border-radius: 1.5rem;
+  background-color: $backdround-color;
+
+  &__tabs {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+  }
+
+  &__radio {
+    display: none;
+
+    &:checked + .auth-form__tab {
+      color: $accent-color;
+    }
+  }
+
+  &__tab {
+    cursor: pointer;
+    color: $base-color;
+    transition:color 0.2s ease;
+  }
+
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  &__error {
+    display: flex;
+    justify-content: center;
+    padding: 0.75rem;
+    border: 1px solid $error-color;
+    border-radius: 1rem;
+    color: $error-color;
+    background: $error-background-color;
+    font-size: 0.9rem;
+  }
+
+  &__button {
+    align-self: center;
+    padding: 0.5rem 1.5rem;
+    background: $button-background;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    &:hover {
+      background: #0891b2;
+    }
+  }
+
+  &__button-text {
+    color: $button-text-color;
+    font-weight: 500;
+  }
+}
+</style>

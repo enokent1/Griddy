@@ -1,6 +1,6 @@
 <template>
-  <div class="h-full px-4 py-5">
-    <ul class="space-y-2">
+  <div class="sidebar">
+    <ul class="sidebar__menu">
       <li v-for="sidebarItem in sidebarItems" :key="sidebarItem.label">
         <AppLink
           :label="sidebarItem.label"
@@ -15,3 +15,16 @@
 import { sidebarItems } from "../config/sidebarConfig";
 import { AppLink } from "@/shared/ui/AppLink";
 </script>
+
+<style scoped lang="scss">
+.sidebar {
+  height: 100%;
+  padding: 2rem 1.25rem;
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+</style>
