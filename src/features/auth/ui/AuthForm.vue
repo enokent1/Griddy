@@ -84,16 +84,6 @@ const submitForm = async (): Promise<void> => {
 </script>
 
 <style scope lang="scss">
-$border-color: oklch(85.4% 0.15 195.2 / 0.6);
-$backdround-color: oklch(20.8% 0.042 265.755);
-$accent-color: oklch(78.9% 0.154 211.53);
-$base-color: oklch(92.9% 0.013 255.508);
-$error-color: oklch(70.4% 0.191 22.216);
-$error-background-color: oklch(63.7% 0.237 25.331 / 0.3);
-$button-background: oklch(71.5% 0.143 215.221);
-$button-text-color: oklch(27.9% 0.041 260.031);
-
-
 .auth-form {
   display: flex;
   flex-direction: column;
@@ -101,9 +91,9 @@ $button-text-color: oklch(27.9% 0.041 260.031);
   width: 100%;
   max-width: 30rem;
   padding: 1.5rem;
-  border: 1px solid $border-color;
+  border: 1px solid var(--color-border-strong);
   border-radius: 1.5rem;
-  background-color: $backdround-color;
+  background-color: var(--color-surface);
 
   &__tabs {
     display: flex;
@@ -115,14 +105,14 @@ $button-text-color: oklch(27.9% 0.041 260.031);
     display: none;
 
     &:checked + .auth-form__tab {
-      color: $accent-color;
+      color: var(--color-brand);
     }
   }
 
   &__tab {
     cursor: pointer;
-    color: $base-color;
-    transition:color 0.2s ease;
+    color: var(--color-text-secondary);
+    transition: color 0.2s ease;
   }
 
   &__inputs {
@@ -136,29 +126,29 @@ $button-text-color: oklch(27.9% 0.041 260.031);
     display: flex;
     justify-content: center;
     padding: 0.75rem;
-    border: 1px solid $error-color;
+    border: 1px solid var(--color-error);
     border-radius: 1rem;
-    color: $error-color;
-    background: $error-background-color;
+    color: var(--color-error);
+    background: var(--color-error-surface);
     font-size: 0.9rem;
   }
 
   &__button {
     align-self: center;
     padding: 0.5rem 1.5rem;
-    background: $button-background;
+    background: var(--color-action);
     border: none;
     border-radius: 999px;
     cursor: pointer;
     transition: 0.2s ease;
 
     &:hover {
-      background: #0891b2;
+      background: var(--color-hover);
     }
   }
 
   &__button-text {
-    color: $button-text-color;
+    color: var(--color-action-foreground);
     font-weight: 500;
   }
 }

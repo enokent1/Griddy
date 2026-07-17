@@ -32,14 +32,6 @@ $header-padding-horizontal: 1.5rem;
 $header-gap: 0.75rem;
 $header-logo-size: 2.5rem;
 $header-radius: 1rem;
-$header-gradient-start: oklch(78.9% 0.154 211.53);
-$header-gradient-end: oklch(50.5% 0.24 235);
-$header-text: oklch(96.8% 0.007 247.896);
-$header-muted-text: oklch(71% 0.017 251);
-$header-border: oklch(20.8% 0.042 265.755 / 0.7);
-$header-bg-hover: oklch(28% 0.055 262 / 0.8);
-$profile-bg: oklch(20.8% 0.042 265.755 / 0.7);
-$profile-border-hover: oklch(78.9% 0.154 211.53 / 0.5);
 $transition-duration: 0.2s;
 
 .header {
@@ -63,11 +55,11 @@ $transition-duration: 0.2s;
     border-radius: $header-radius;
     font-weight: 600;
     font-size: 1.125rem;
-    color: oklch(100% 0 0 / 1);
+    color: var(--color-text-inverse);
     background: linear-gradient(
       135deg,
-      $header-gradient-start 0%,
-      $header-gradient-end 100%
+      var(--color-header-gradient-start) 0%,
+      var(--color-header-gradient-end) 100%
     );
   }
 
@@ -75,7 +67,7 @@ $transition-duration: 0.2s;
     font-size: 1.125rem;
     font-weight: 600;
     letter-spacing: 0.2em;
-    color: $header-text;
+    color: var(--color-header-text);
   }
 
   &__profile {
@@ -84,8 +76,8 @@ $transition-duration: 0.2s;
       align-items: center;
       gap: $header-gap;
       border-radius: $header-radius;
-      border: 1px solid $header-border;
-      background-color: $profile-bg;
+      border: 1px solid var(--color-profile-border-hover);
+      background-color: var(--color-profile-background);
       padding: 0.5rem 0.75rem;
       transition:
         background-color $transition-duration ease,
@@ -93,8 +85,8 @@ $transition-duration: 0.2s;
       text-decoration: none;
 
       &:hover {
-        border-color: $profile-border-hover;
-        background-color: $header-bg-hover;
+        border-color: var(--color-profile-border-hover);
+        background-color: var(--color-header-hover-background);
       }
     }
 
@@ -105,13 +97,13 @@ $transition-duration: 0.2s;
     &-name {
       font-size: 0.875rem;
       font-weight: 500;
-      color: $header-text;
+      color: var(--color-header-text);
       margin: 0;
     }
 
     &-role {
       font-size: 0.75rem;
-      color: $header-muted-text;
+      color: var(--color-header-muted-text);
       margin: 0;
     }
   }

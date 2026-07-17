@@ -38,10 +38,6 @@ const updateInputValue = (): void => {
 </script>
 
 <style scoped lang="scss">
-$border-color: #c9c9c9;
-$accent-color: oklch(86.5% 0.127 207.078);
-$bg-color: oklch(20.8% 0.042 265.755);
-
 .input-container {
   position: relative;
   width: 100%;
@@ -50,22 +46,22 @@ $bg-color: oklch(20.8% 0.042 265.755);
     width: 100%;
     height: 3rem;
     padding: 1rem 1rem 0.3rem;
-    border: 2px solid $border-color;
+    border: 2px solid var(--color-border-subtle);
     border-radius: 1rem;
     background: transparent;
-    color: $border-color;
+    color: var(--color-border-subtle);
     outline: none;
     box-sizing: border-box;
     transition: 0.2s ease;
 
     &:focus {
-      color: $accent-color;
-      border-color: $accent-color;
+      color: var(--color-brand-bright);
+      border-color: var(--color-brand-bright);
 
       + .label-line {
         top: 0;
         transform: translateY(-50%) scale(0.8);
-        color: $accent-color;
+        color: var(--color-brand-bright);
       }
     }
   }
@@ -76,15 +72,15 @@ $bg-color: oklch(20.8% 0.042 265.755);
     left: 1rem;
     transform: translateY(-50%);
     padding: 0 0.3rem;
-    background: $bg-color;
-    color: #fff;
+    background: var(--color-surface);
+    color: var(--color-text-inverse);
     pointer-events: none;
     transition: 0.3s ease;
 
     &.not-empty {
       top: 0;
       transform: translateY(-50%) scale(0.8);
-      color: $border-color;
+      color: var(--color-border-subtle);
     }
   }
 }

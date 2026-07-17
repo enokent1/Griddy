@@ -31,8 +31,6 @@ const userInitials = computed(() => {
 
 <style scoped lang="scss">
 $avatar-size: 2.5rem;
-$avatar-bg: #b45309;
-$avatar-text: #ffffff;
 
 .avatar {
   position: relative;
@@ -54,8 +52,8 @@ $avatar-text: #ffffff;
     align-items: center;
     justify-content: center;
     font-weight: 500;
-    background-color: $avatar-bg;
-    color: $avatar-text;
+    background-color: var(--color-avatar-background);
+    color: var(--color-avatar-text);
   }
 }
 </style>

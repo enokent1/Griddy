@@ -17,15 +17,12 @@ const handleSuccess = (): void => {
 </script>
 
 <style scope lang="scss">
-$background-color: oklch(12.9% 0.042 264.695);
-$text-color: oklch(96.8% 0.007 247.896);
-
 .auth-page {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: $background-color;
-  color: $text-color;
+  background: var(--color-background);
+  color: var(--color-text-primary);
 }
 </style>

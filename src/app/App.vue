@@ -20,10 +20,15 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import { Header } from "@/widgets/header";
 import { Sidebar } from "@/widgets/sidebar";
 import { useRoute } from "vue-router";
+
+onMounted(() => {
+  const theme = localStorage.getItem("theme")?? "dark"
+  document.documentElement.dataset.theme = theme
+})
 
 const route = useRoute();
 
@@ -33,21 +38,16 @@ const isauthOrRootRoute = computed<boolean>(
 </script>
 
 <style scope lang="scss">
-$background-color: oklch(12.9% 0.042 264.695);
-$border-color: oklch(78.9% 0.154 211.53 / 0.2);
-$header-background-color: oklch(20.8% 0.042 265.755 / 0.9);
-$sidebar-background-color: oklch(20.8% 0.042 265.755 / 0.8);
-
 .app-layout {
   height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr;
-  background: $background-color;
+  background: var(--color-background);
 
   &__header {
     grid-row: 1 / 2;
-    border-bottom: 1px solid $border-color;
-    background: $header-background-color;
+    border-bottom: 1px solid var(--color-border-subtle);
+    background: var(--color-header-background);
   }
 
   &__body {
@@ -58,8 +58,8 @@ $sidebar-background-color: oklch(20.8% 0.042 265.755 / 0.8);
   }
 
   &__sidebar {
-    background: $sidebar-background-color;
-    border-right: 1px solid $border-color;
+    background: var(--color-sidebar-background);
+    border-right: 1px solid var(--color-border-subtle);
     overflow-y: auto;
   }
 

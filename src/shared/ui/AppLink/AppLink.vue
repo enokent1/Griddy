@@ -14,12 +14,6 @@ defineProps<{
 </script>
 
 <style scoped lang="scss">
-$color-text: #cbd5e1;
-$color-text-strong: #ffffff;
-$color-bg-hover: #1e293b;
-$color-icon-bg: #0f172a;
-$color-icon-text: #67e8f9;
-
 .app-link {
   display: flex;
   align-items: center;
@@ -27,14 +21,14 @@ $color-icon-text: #67e8f9;
   border-radius: 1rem;
   padding: 0.5rem 0.75rem;
   font-size: 0.875rem;
-  color: $color-text;
+  color: var(--color-text-secondary);
   transition:
     background-color 0.2s ease,
     color 0.2s ease;
 
   &:hover {
-    background-color: $color-bg-hover;
-    color: $color-text-strong;
+    background-color: var(--color-header-hover-background);
+    color: var(--color-text-inverse);
   }
 }
 
@@ -45,8 +39,8 @@ $color-icon-text: #67e8f9;
   width: 2rem;
   height: 2rem;
   border-radius: 0.75rem;
-  background-color: $color-icon-bg;
-  color: $color-icon-text;
+  background-color: var(--color-surface-muted);
+  color: var(--color-brand-bright);
   font-size: 0.75rem;
   font-weight: 700;
 }
