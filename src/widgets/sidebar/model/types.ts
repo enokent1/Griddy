@@ -1,5 +1,10 @@
+export type SidebarSubmenu = {
+  label: string,
+  path: string
+}
+
 export type SidebarNavItem = {
   label: string;
-  icon: string;
-  path: string;
+  path?: string;
+  children?: SidebarSubmenu[]
 };
