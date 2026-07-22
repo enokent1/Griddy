@@ -1,6 +1,6 @@
 <template>
     <div>
-        Dashboard
+        All Elements
     </div>
 </template>
 
