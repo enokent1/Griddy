@@ -1,9 +1,8 @@
 <template>
-    <div>
-        All Elements
-    </div>
+  <UIElementsGrid :componentList="UIComponentList"/>
 </template>
 
-<script lang="ts">
-
+<script setup lang="ts">
+import { UIElementsGrid } from '@/widgets/UIElementsGrid';
+import { UIComponentList } from '@/entities/component';
 </script>

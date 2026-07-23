@@ -6,9 +6,7 @@ import { AllElementsPage } from '@/pages/elements'
 const routes = [
   {path: '/', component: HomePage},
   {path: '/login', component: LoginPage},
-  {path: '/elements', component: AllElementsPage, children: [
-    
-  ]}
+  {path: '/elements', component: AllElementsPage}
 ]
 
 export const router = createRouter({
