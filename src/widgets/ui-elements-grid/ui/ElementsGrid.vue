@@ -4,6 +4,7 @@
       v-for="component in props.componentList"
       :key="component.id"
       :cardTags="component.tags"
+      :id="component.id"
     >
       <component :is="component.preview" />
     </ElementCard>

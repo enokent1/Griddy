@@ -3,6 +3,6 @@
 </template>
 
 <script setup lang="ts">
-import { UIElementsGrid } from '@/widgets/UIElementsGrid';
+import { UIElementsGrid } from '@/widgets/ui-elements-grid';
 import { UIComponentList } from '@/entities/component';
 </script>
