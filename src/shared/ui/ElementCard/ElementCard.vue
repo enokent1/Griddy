@@ -1,19 +1,22 @@
 <template>
-  <div class="element-card">
+  <router-link :to="`elements/${props.id}`" class="element-card">
     <div class="element-card__tag-list">
-      <span v-for="tag in cardTags" class="element-card__tag-item">
+      <span v-for="tag in cardTags" :key="tag" class="element-card__tag-item">
         {{ tag }}
       </span>
     </div>
     <div class="element-card__preview">
-      <slot></slot>
+      <div @click.stop.prevent><slot></slot></div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script setup lang="ts">
+import { RouterLink } from "vue-router";
+
 const props = defineProps<{
   cardTags: string[];
+  id: string;
 }>();
 </script>
 
