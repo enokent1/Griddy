@@ -6,12 +6,12 @@ export const validateUsername = (username: string): ValidationResult => {
       isValid: false, 
       error: "Логин не должен начинаться с цифры." 
     };
-  if (username.length < 6 || username.length > 16)
+  if (username.length < 6 || username.length > 20)
     return { 
       isValid: false, 
-      error: "Логин должен быть от 6 до 16 символов." 
+      error: "Логин должен быть от 6 до 20 символов." 
     };
-  if (/[!@#$%^&*()]/.test(username))
+  if (/[!@#$%^&*().]/.test(username))
     return {
       isValid: false,
       error: "Логин не должен содержать спецсимволы: !@#$%^&*()."
@@ -35,6 +35,11 @@ export const validatePassword = (password: string): ValidationResult => {
     return { 
       isValid: false, 
       error: "Пароль должен быть от 8 до 32 символов." 
+    };
+  if (/[а-яё]/i.test(password))
+    return {
+      isValid: false,
+      error: "Пароль должен содержать только латиницу."
     };
   if (!/[A-Z]/.test(password))
     return {
@@ -60,11 +65,6 @@ export const validatePassword = (password: string): ValidationResult => {
     return { 
       isValid: false, 
       error: "Пароль не должен содержать пробелов." 
-    };
-  if (/[а-яё]/i.test(password))
-    return {
-      isValid: false,
-      error: "Пароль должен содержать только латиницу."
     };
 
   return { isValid: true };
