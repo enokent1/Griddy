@@ -1,8 +1,6 @@
 import type {
   LoginPayload,
   LoginResponse,
-  ErrorResponse,
-  ErrorMessage,
   LoginResult,
 } from "../model/types";
 import { API_URL } from "@/shared/config/api";
@@ -25,10 +23,8 @@ export const authenticateUser = async (
     });
 
     if (!response.ok) {
-      const errorData: ErrorMessage = await response.json();
       return {
         success: false,
-        error: errorData.message,
         status: response.status,
       };
     }
@@ -38,7 +34,6 @@ export const authenticateUser = async (
   } catch (error) {
     return {
       success: false,
-      error: "Unknown error",
       status: 0,
     } as LoginResult;
   }

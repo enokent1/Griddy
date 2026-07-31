@@ -24,13 +24,9 @@ export type User = Omit<LoginResponse, "accessToken" | "refreshToken">;
 
 export type LoginResult =
   | { success: true; userData: LoginResponse }
-  | { success: false; error: string; status: number };
+  | { success: false; status: number };
 
 export interface ErrorResponse {
   status: number;
-  message: string;
-}
-
-export interface ErrorMessage {
   message: string;
 }
