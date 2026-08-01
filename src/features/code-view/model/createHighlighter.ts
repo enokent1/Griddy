@@ -7,5 +7,8 @@ export async function createHighlighter(
   return codeToHtml(code, {
     lang,
     theme: "github-dark",
+    colorReplacements: {
+      "#24292e": "transparent",
+    },
   });
 }

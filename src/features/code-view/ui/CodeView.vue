@@ -8,12 +8,13 @@ import { createHighlighter } from "../model/createHighlighter";
 
 const props = defineProps<{
   codeString: string;
+  codeLang: "html" | "css";
 }>();
 
 const code = ref<string>("");
 
 const renderCode = async (): Promise<void> => {
-  code.value = await createHighlighter(props.codeString, "html");
+  code.value = await createHighlighter(props.codeString, props.codeLang);
 };
 
 watch(
