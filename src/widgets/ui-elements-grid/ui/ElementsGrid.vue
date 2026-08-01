@@ -4,8 +4,7 @@
       v-for="component in props.componentList"
       :key="component.id"
       :cardTags="component.tags"
-      :id="component.id"
-    >
+      :id="component.id">
       <component :is="component.preview" />
     </ElementCard>
   </div>
@@ -20,4 +19,9 @@ const props = defineProps<{
 }>();
 </script>
 
-<style scoped></style>
+<style scoped>
+.elements-grid {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+}
+</style>

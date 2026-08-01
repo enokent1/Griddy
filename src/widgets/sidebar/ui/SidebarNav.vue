@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import type { SidebarNavItem} from "../model/types";
+import type { SidebarNavItem } from "../model/types";
 import { ref } from "vue";
 
 const props = defineProps<{
@@ -78,6 +78,7 @@ function toggleSubItems(item: SidebarNavItem): void {
     &-item {
       padding: 0.3rem 0.7rem;
       border-radius: 0.5rem;
+      transition: background 0.25s ease;
       &:hover {
         background: var(--color-hover);
         cursor: pointer;
@@ -90,19 +91,23 @@ function toggleSubItems(item: SidebarNavItem): void {
   &-enter-from,
   &-leave-to {
     max-height: 0;
+    opacity: 0;
     overflow: hidden;
   }
 
   &-enter-to,
   &-leave-from {
     max-height: 12rem;
+    opacity: 100;
     overflow: hidden;
   }
 
   &-enter-active,
   &-leave-active {
     overflow: hidden;
-    transition: max-height 0.35s ease;
+    transition:
+      max-height 0.35s ease,
+      opacity 0.35s ease;
   }
 }
 </style>
