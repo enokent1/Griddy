@@ -1,14 +1,11 @@
 <template>
-  <main
-    class="home-page">
-    <div
-      class="home-page__card">
+  <main class="home-page">
+    <div class="home-page__card">
       <h1 class="home-page__title">
-        Добро пожаловать в <span class="home-page__title-highlight">Griddy</span>
+        Добро пожаловать в
+        <span class="home-page__title-highlight">Griddy</span>
       </h1>
-      <RouterLink
-        to="/login"
-        class="home-page__action-button">
+      <RouterLink to="/login" class="home-page__action-button">
         Авторизация
       </RouterLink>
     </div>
@@ -40,7 +37,7 @@ import { RouterLink } from "vue-router";
   &__title {
     font-size: large;
     font-weight: 500;
-    color: white;
+    color: var(--color-text-primary);
 
     &-highlight {
       color: var(--color-brand);
