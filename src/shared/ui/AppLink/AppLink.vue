@@ -1,6 +1,5 @@
 <template>
   <RouterLink :to="path" class="app-link">
-    <span class="app-link__icon">{{ icon }}</span>
     <span class="app-link__label">{{ label }}</span>
   </RouterLink>
 </template>
@@ -8,7 +7,6 @@
 <script setup lang="ts">
 defineProps<{
   label: string;
-  icon: string;
   path: string;
 }>();
 </script>
@@ -30,22 +28,10 @@ defineProps<{
     background-color: var(--color-header-hover-background);
     color: var(--color-text-inverse);
   }
+
+  &__label {
+    line-height: 1.25;
+  }
 }
 
-.app-link__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 0.75rem;
-  background-color: var(--color-surface-muted);
-  color: var(--color-brand-bright);
-  font-size: 0.75rem;
-  font-weight: 700;
-}
-
-.app-link__label {
-  line-height: 1.25;
-}
 </style>
