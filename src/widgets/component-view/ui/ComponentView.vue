@@ -12,19 +12,33 @@
       <div class="component-view__mode-switchers">
         <SwitchCodeButton
           type="html"
+          :is-active="activeCodeView === 'html'"
           @click="toggleCodeView('html')"></SwitchCodeButton>
         <SwitchCodeButton
           type="css"
+          :is-active="activeCodeView === 'css'"
           @click="toggleCodeView('css')"></SwitchCodeButton>
       </div>
-      <CodeView
-        v-show="activeCodeView === 'html'"
-        :code-string="props.component.html"
-        code-lang="html" />
-      <CodeView
-        v-show="activeCodeView === 'css'"
-        :code-string="props.component.css"
-        code-lang="css" />
+      <div
+        class="component-view__code-wrapper"
+        :class="{
+          'component-view__code-wrapper_html': activeCodeView === 'html',
+        }">
+        <div class="component-view__code">
+          <CodeView
+            v-show="activeCodeView === 'html'"
+            :code-string="props.component.html"
+            code-lang="html" />
+          <CodeView
+            v-show="activeCodeView === 'css'"
+            :code-string="props.component.css"
+            code-lang="css" />
+        </div>
+      </div>
+      <ButtonWithIcon
+        style="margin-top: 0.5rem"
+        :icon="CopyIcon"
+        text="Copy code" />
     </div>
   </div>
 </template>
@@ -34,6 +48,8 @@ import { ref } from "vue";
 import type { CatalogComponent } from "@/entities/component/model/types";
 import { CodeView } from "@/features/code-view";
 import { SwitchCodeButton } from "@/shared/ui/SwitchCodeButton";
+import { CopyIcon } from "@/shared/assets/icons";
+import { ButtonWithIcon } from "@/shared/ui/ButtonWithIcon";
 
 const props = defineProps<{
   component: CatalogComponent;
@@ -81,12 +97,30 @@ function toggleCodeView(codeLang: "html" | "css"): void {
 
   &__code-block {
     position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
     width: 475px;
     padding: 1rem;
     border-radius: 1rem;
     background-color: var(--color-surface-soft);
-    overflow: auto;
+    overflow: hidden;
     min-height: 0;
+  }
+  &__code-wrapper {
+    padding: 0.5rem;
+    min-height: 0;
+    background-color: var(--color-surface-elevated);
+    border-radius: 0.5rem;
+    overflow: hidden;
+
+    &_html {
+      border-top-left-radius: 0;
+    }
+  }
+
+  &__code {
+    height: 100%;
+    overflow: auto;
 
     &::-webkit-scrollbar {
       width: 12px;
