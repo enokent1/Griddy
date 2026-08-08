@@ -9,16 +9,9 @@
       </div>
     </div>
     <div class="component-view__code-block">
-      <div class="component-view__mode-switchers">
-        <SwitchCodeButton
-          type="html"
-          :is-active="activeCodeView === 'html'"
-          @click="toggleCodeView('html')"></SwitchCodeButton>
-        <SwitchCodeButton
-          type="css"
-          :is-active="activeCodeView === 'css'"
-          @click="toggleCodeView('css')"></SwitchCodeButton>
-      </div>
+      <Mode
+        :active-code-view="activeCodeView"
+        @toggle-code-view="activeCodeView = $event" />
       <div
         class="component-view__code-wrapper"
         :class="{
@@ -36,7 +29,7 @@
         </div>
       </div>
       <ButtonWithIcon
-        style="margin-top: 0.5rem"
+        style="margin-top: 1rem"
         :icon="CopyIcon"
         text="Copy code" />
     </div>
@@ -47,19 +40,15 @@
 import { ref } from "vue";
 import type { CatalogComponent } from "@/entities/component/model/types";
 import { CodeView } from "@/features/code-view";
-import { SwitchCodeButton } from "@/shared/ui/SwitchCodeButton";
 import { CopyIcon } from "@/shared/assets/icons";
 import { ButtonWithIcon } from "@/shared/ui/ButtonWithIcon";
+import Mode from "./Mode.vue";
 
 const props = defineProps<{
   component: CatalogComponent;
 }>();
 
 const activeCodeView = ref<"html" | "css">("html");
-
-function toggleCodeView(codeLang: "html" | "css"): void {
-  activeCodeView.value = codeLang;
-}
 </script>
 
 <style lang="scss" scoped>
@@ -78,12 +67,6 @@ function toggleCodeView(codeLang: "html" | "css"): void {
       font-size: 38px;
       font-weight: 600;
     }
-  }
-
-  &__mode-switchers {
-    position: sticky;
-    top: 0;
-    left: 0;
   }
 
   &__preview {
