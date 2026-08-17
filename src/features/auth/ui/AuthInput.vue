@@ -49,7 +49,7 @@ const updateInputValue = (): void => {
     border: 2px solid var(--color-border-subtle);
     border-radius: 1rem;
     background: transparent;
-    color: var(--color-border-subtle);
+    color: var(--color-text-muted);
     outline: none;
     box-sizing: border-box;
     transition: 0.2s ease;
@@ -73,7 +73,7 @@ const updateInputValue = (): void => {
     transform: translateY(-50%);
     padding: 0 0.3rem;
     background: var(--color-surface);
-    color: var(--color-text-inverse);
+    color: var(--color-text-muted);
     pointer-events: none;
     transition: 0.3s ease;
 

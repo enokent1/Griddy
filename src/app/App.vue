@@ -1,14 +1,10 @@
 <template>
-  <div
-    v-if="!isauthOrRootRoute"
-    class="app-layout">
-    <header
-      class="app-layout__header">
+  <div class="app-layout">
+    <header class="app-layout__header">
       <Header />
     </header>
     <div class="app-layout__body">
-      <aside
-        class="app-layout__sidebar">
+      <aside class="app-layout__sidebar">
         <Sidebar />
       </aside>
       <main class="app-layout__main">
@@ -16,28 +12,20 @@
       </main>
     </div>
   </div>
-  <RouterView v-else />
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted } from "vue";
+import { onMounted } from "vue";
 import { Header } from "@/widgets/header";
 import { Sidebar } from "@/widgets/sidebar";
-import { useRoute } from "vue-router";
 
 onMounted(() => {
-  const theme = localStorage.getItem("theme")?? "dark"
-  document.documentElement.dataset.theme = theme
-})
-
-const route = useRoute();
-
-const isauthOrRootRoute = computed<boolean>(
-  () => route.path === "/" || route.path === "/login",
-);
+  const theme = localStorage.getItem("theme") ?? "dark";
+  document.documentElement.dataset.theme = theme;
+});
 </script>
 
-<style scope lang="scss">
+<style scoped lang="scss">
 .app-layout {
   height: 100vh;
   display: grid;
@@ -52,7 +40,7 @@ const isauthOrRootRoute = computed<boolean>(
 
   &__body {
     display: grid;
-    grid-template-columns: minmax(10%, 20%) 1fr;
+    grid-template-columns: minmax(10%, 15%) 1fr;
     grid-row-start: 2;
     overflow: hidden;
   }
