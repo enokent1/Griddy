@@ -1,5 +1,5 @@
 <template>
-  <input type="email" class="input" placeholder="Email" />
+  <input type="email" class="input" placeholder="Email" autocomplete="off"/>
 </template>
 
 <style scoped>
