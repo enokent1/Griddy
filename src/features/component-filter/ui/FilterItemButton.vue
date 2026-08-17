@@ -1,5 +1,8 @@
 <template>
-  <button class="filter__item">
+  <button
+    class="filter__item"
+    :class="{ 'filter__item--active': props.isActive }"
+    @click="emit('select', props.buttonTitle)">
     {{ props.buttonTitle }}
   </button>
 </template>
@@ -7,6 +10,11 @@
 <script setup lang="ts">
 const props = defineProps<{
   buttonTitle: string;
+  isActive?: boolean;
+}>();
+
+const emit = defineEmits<{
+  (e: "select", value: string): void;
 }>();
 </script>
 
@@ -24,6 +32,12 @@ const props = defineProps<{
   &:hover {
     background-color: var(--color-surface-hover);
     border: 1px solid var(--color-border-hover);
+  }
+
+  &--active {
+    background-color: var(--color-surface-hover);
+    border-color: var(--color-border-hover);
+    color: var(--color-text-primary);
   }
 }
 </style>
