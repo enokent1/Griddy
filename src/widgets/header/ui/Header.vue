@@ -1,11 +1,8 @@
 <template>
   <div class="header">
-    <div class="header__brand">
-      <div class="header__logo">G</div>
-      <div>
-        <p class="header__title">GRIDDY</p>
-      </div>
-    </div>
+    <RouterLink to="/" class="header__brand">
+      <Logo />
+    </RouterLink>
 
     <RouterLink to="/profile" class="header__profile-link">
       <Avatar :name="user.name" />
@@ -18,6 +15,7 @@
 </template>
 
 <script setup>
+import { Logo } from "@/shared/ui/Logo";
 import { Avatar } from "@/shared/ui/Avatar";
 
 const user = {
@@ -44,30 +42,6 @@ $transition-duration: 0.2s;
     display: flex;
     align-items: center;
     gap: $header-gap;
-  }
-
-  &__logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: $header-logo-size;
-    height: $header-logo-size;
-    border-radius: $header-radius;
-    font-weight: 600;
-    font-size: 1.125rem;
-    color: var(--color-text-inverse);
-    background: linear-gradient(
-      135deg,
-      var(--color-header-gradient-start) 0%,
-      var(--color-header-gradient-end) 100%
-    );
-  }
-
-  &__title {
-    font-size: 1.125rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    color: var(--color-header-text);
   }
 
   &__profile {
