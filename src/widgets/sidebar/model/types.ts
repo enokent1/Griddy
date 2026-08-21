@@ -1,10 +1,7 @@
-export type SidebarSubmenu = {
-  label: string,
-  path: string
-}
+import type { Component } from "vue";
 
 export type SidebarNavItem = {
   label: string;
-  path?: string;
-  children?: SidebarSubmenu[]
+  path: string;
+  icon: Component;
 };

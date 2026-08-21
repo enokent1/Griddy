@@ -1,19 +1,10 @@
 import type { SidebarNavItem } from "../model/types";
+import { SquaresIcon } from "@/shared/assets/icons";
 
 export const sidebarNavItems: SidebarNavItem[] = [
   {
-    label: "Elements",
-    children: [
-      {label: "All", path: "/elements"},
-      { label: "Inputs", path: "/elements/inputs" },
-      { label: "Buttons", path: "/elements/buttons" },
-      { label: "Switches", path: "/elements/switches" },
-      { label: "Loaders", path: "/elements/loaders" },
-      { label: "Forms", path: "/elements/forms" },
-    ],
+    label: "elements",
+    path: "/",
+    icon: SquaresIcon,
   },
-  {
-    label: "Projects",
-    path: "/projects"
-  }
 ];
