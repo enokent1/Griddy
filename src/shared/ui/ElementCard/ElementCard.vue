@@ -1,20 +1,22 @@
 <template>
   <article>
-    <router-link :to="`elements/${props.id}`" class="element-card">
+    <div @click="router.push(`/elements/${props.id}`)" class="element-card">
       <div class="element-card__tag-list">
         <span v-for="tag in cardTags" :key="tag" class="element-card__tag-item">
           {{ tag }}
         </span>
       </div>
       <div class="element-card__preview">
-        <div @click.stop.prevent><slot></slot></div>
+        <div @click.stop><slot></slot></div>
       </div>
-    </router-link>
+    </div>
   </article>
 </template>
 
 <script setup lang="ts">
-import { RouterLink } from "vue-router";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const props = defineProps<{
   cardTags: string[];
@@ -34,6 +36,7 @@ const props = defineProps<{
   background-color: var(--color-surface-soft);
   border-radius: 1rem;
   padding: 1rem;
+  cursor: pointer;
 
   &__tag-list {
     display: flex;

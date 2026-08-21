@@ -21,7 +21,9 @@ const props = defineProps<{
 
 <style scoped>
 .elements-grid {
+  margin-top: 1rem;
   display: grid;
   grid-template-columns: repeat(4, auto);
+  gap: 1rem;
 }
 </style>
