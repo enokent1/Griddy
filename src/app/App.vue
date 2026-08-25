@@ -40,7 +40,7 @@ onMounted(() => {
 
   &__body {
     display: grid;
-    grid-template-columns: minmax(10%, 15%) 1fr;
+    grid-template-columns: auto 1fr;
     grid-row-start: 2;
     overflow: hidden;
   }
@@ -48,7 +48,7 @@ onMounted(() => {
   &__sidebar {
     background: var(--color-sidebar-background);
     border-right: 1px solid var(--color-border-subtle);
-    overflow-y: auto;
+    overflow: visible;
   }
 
   &__main {
