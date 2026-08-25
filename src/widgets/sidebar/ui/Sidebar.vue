@@ -12,6 +12,7 @@ import SidebarNav from "./SidebarNav.vue";
 <style scoped lang="scss">
 .sidebar {
   height: 100%;
-  padding: 2rem 1.25rem;
+  padding-top: 2rem;
+  padding-left: 1rem;
 }
 </style>

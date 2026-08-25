@@ -48,7 +48,7 @@ onMounted(() => {
   &__sidebar {
     background: var(--color-sidebar-background);
     border-right: 1px solid var(--color-border-subtle);
-    overflow-y: auto;
+    overflow: visible;
   }
 
   &__main {
