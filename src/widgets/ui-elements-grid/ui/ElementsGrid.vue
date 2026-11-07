@@ -1,5 +1,8 @@
 <template>
-  <div class="elements-grid">
+  <p v-if="props.componentList.length === 0" class="elements-grid-empty" role="status">
+    В этой категории пока нет компонентов
+  </p>
+  <div v-else class="elements-grid">
     <ElementCard
       v-for="component in props.componentList"
       :key="component.id"
@@ -20,6 +23,11 @@ const props = defineProps<{
 </script>
 
 <style scoped>
+.elements-grid-empty {
+  margin-top: 1rem;
+  color: var(--color-text-secondary);
+}
+
 .elements-grid {
   margin-top: 1rem;
   display: grid;
