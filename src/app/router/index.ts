@@ -5,10 +5,10 @@ import { ElementDetailsPage } from "@/pages/element-details";
 import { NotFoundPage } from "@/pages/not-found";
 
 const routes = [
-  { path: "/", component: ElementsPage },
-  { path: "/login", component: LoginPage },
-  { path: "/elements/:id", component: ElementDetailsPage },
-  { path: "/:pathMatch(.*)*", component: NotFoundPage },
+  { path: "/", name: "catalog", component: ElementsPage },
+  { path: "/login", name: "login", component: LoginPage },
+  { path: "/elements/:id", name: "element-details", component: ElementDetailsPage },
+  { path: "/:pathMatch(.*)*", name: "not-found", component: NotFoundPage },
 ];
 
 export const router = createRouter({
