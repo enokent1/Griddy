@@ -12,7 +12,7 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const handleSuccess = (): void => {
-  router.push("/elements");
+  router.push({ name: "catalog" });
 };
 </script>
 
