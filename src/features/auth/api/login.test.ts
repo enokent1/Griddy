@@ -1,4 +1,4 @@
-import { describe, expect, test, vi, afterEach } from "vitest";
+import { describe, expect, test, vi, beforeEach, afterEach } from "vitest";
 import { authenticateUser } from "./login";
 import type { LoginPayload, LoginResult } from "../model/types";
 
@@ -7,10 +7,17 @@ const loginPayload: LoginPayload = {
   password: "password",
 };
 
-const mockFetch = vi.spyOn(globalThis, "fetch");
+let mockFetch: ReturnType<typeof vi.fn<typeof fetch>>;
+
+beforeEach(() => {
+  mockFetch = vi.fn<typeof fetch>(() => {
+    throw new Error("Unexpected fetch call: configure a mocked response first");
+  });
+  vi.stubGlobal("fetch", mockFetch);
+});
 
 afterEach(() => {
-  vi.restoreAllMocks();
+  vi.unstubAllGlobals();
 });
 
 describe("authenticateUser", () => {
