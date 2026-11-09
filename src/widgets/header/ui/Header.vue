@@ -7,23 +7,12 @@
       </div>
     </div>
 
-    <RouterLink to="/profile" class="header__profile-link">
-      <Avatar :name="user.name" />
-      <div class="header__profile-info">
-        <p class="header__profile-name">{{ user.name }}</p>
-        <p class="header__profile-role">{{ user.role }}</p>
-      </div>
-    </RouterLink>
+    <RouterLink to="/login" class="header__login-button">Войти</RouterLink>
   </div>
 </template>
 
 <script setup>
-import { Avatar } from "@/shared/ui/Avatar";
-
-const user = {
-  name: "Андрей Зотин",
-  role: "Frontend-разработчик",
-};
+import { RouterLink } from "vue-router";
 </script>
 
 <style scoped lang="scss">
@@ -70,41 +59,26 @@ $transition-duration: 0.2s;
     color: var(--color-header-text);
   }
 
-  &__profile {
-    &-link {
-      display: flex;
-      align-items: center;
-      gap: $header-gap;
-      border-radius: $header-radius;
-      border: 1px solid var(--color-profile-border-hover);
-      background-color: var(--color-profile-background);
-      padding: 0.5rem 0.75rem;
-      transition:
-        background-color $transition-duration ease,
-        border-color $transition-duration ease;
-      text-decoration: none;
+  &__login-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $header-radius;
+    padding: 0.5rem 1.25rem;
+    background-color: var(--color-action);
+    color: var(--color-action-foreground);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color $transition-duration ease;
 
-      &:hover {
-        border-color: var(--color-profile-border-hover);
-        background-color: var(--color-header-hover-background);
-      }
+    &:hover {
+      background-color: var(--color-accent-hover);
     }
 
-    &-info {
-      text-align: left;
-    }
-
-    &-name {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--color-header-text);
-      margin: 0;
-    }
-
-    &-role {
-      font-size: 0.75rem;
-      color: var(--color-header-muted-text);
-      margin: 0;
+    &:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 4px;
     }
   }
 }
